@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Movies from './components/Movies';
 
 class App extends Component {
   render() {
@@ -19,28 +19,7 @@ class App extends Component {
           </div>
         </form>
 
-        <div className="d-flex p-2 justify-content-between flex-wrap" id="movies">
-          <div className="card">
-            <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Movie" />
-            <div className="card-body">
-              <h2 className="card-title text-center">Movie Title</h2>
-            </div>
-          </div>
-
-          <div className="card">
-            <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Movie" />
-            <div className="card-body">
-              <h2 className="card-title text-center">Movie Title</h2>
-            </div>
-          </div>
-
-          <div className="card">
-            <img className="card-img-top" src="https://via.placeholder.com/350x200" alt="Movie" />
-            <div className="card-body">
-              <h2 className="card-title text-center">Movie Title</h2>
-            </div>
-          </div>
-        </div>
+        <Movies />
       </div>
     );
   }
