@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux'
 
-import { MODES } from '../actions'
+import { MODES } from './../actions'
 
 const mode = (state = MODES.TV, action) => {
     switch (action.type) {
-        case TOGGLE_MODE:
-            return state === MODES.TV ? MODES.MOVIE : MODES.TV;  
+        case 'TOGGLE_MODE':
+            return action.mode;  
         default:
             return state;
     }
 }
 
-export default combineReducers(
+const rootReducer = combineReducers({
     mode
-)
+});
+
+export default rootReducer;
