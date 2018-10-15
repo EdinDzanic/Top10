@@ -44,10 +44,16 @@ class ListView extends Component {
     componentDidUpdate(prevProps) {
         const { dispatch, selectedMode, searchQuery } = this.props;
 
-        if (selectedMode !== prevProps.selectedMode || searchQuery !== prevProps.searchQuery) {
+        if (searchQuery !== prevProps.searchQuery) {
             if (searchQuery.length > 2)
                 dispatch(searchItems(selectedMode, searchQuery));
             else if (prevProps.searchQuery.length > 2)
+                dispatch(discoverItems(selectedMode));
+        }
+        else if (selectedMode !== prevProps.selectedMode) {
+            if (searchQuery.length > 2)
+                dispatch(searchItems(selectedMode, searchQuery));
+            else
                 dispatch(discoverItems(selectedMode));
         }
     }
@@ -56,7 +62,7 @@ class ListView extends Component {
         const { items, isLoading, searchQuery } = this.props;
         return (
             <div>
-                <form action="">
+                <section>
                     <div className="form-group">
                         <div className="btn-group" role="group">
                             <ToggleModeButton mode={MODES.MOVIE}>Movies</ToggleModeButton>
@@ -64,7 +70,7 @@ class ListView extends Component {
                         </div>
                     </div>
                     <Search handleChange={this.handleChange} value={searchQuery} />
-                </form>
+                </section>
                 {isLoading ?
                     <div className="d-flex justify-content-center"><img src={spinner} alt="Loading" /></div> :
                     <Movies items={items} onClick={this.handleClick} />}
