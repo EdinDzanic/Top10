@@ -22,9 +22,9 @@ class ListView extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleChange(e) {
+    handleChange(value) {
         const { dispatch } = this.props;
-        const value = e.target.value;
+        //const value = value;
         dispatch(changeSearchQuery(value));
     }
 
