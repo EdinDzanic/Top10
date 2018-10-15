@@ -12,3 +12,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App {
+  padding: 1em 5vw;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
+
+.card {
+  box-shadow: 0 0 5px 3px lightgrey;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px 6px rgb(167, 165, 165);
+  cursor: pointer;
+}
+
+iframe {
+  border: 1px solid lightslategray;
+}
