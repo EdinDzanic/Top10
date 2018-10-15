@@ -6,6 +6,7 @@ import MovieDetails from './MovieDetails';
 import TvDetails from './TvDetails';
 import spinner from './../images/spinner.svg';
 import Button from './Button';
+import LoadingSpinner from './LoadingSpinner';
 
 class DetailsView extends Component {
 
@@ -37,7 +38,7 @@ class DetailsView extends Component {
             <div>
                 <Button cssClass="btn btn-primary mb-2" onClick={this.handleClick}>Back</Button>
                 <div className="d-flex flex-column">
-                    {isLoading ? <img src={spinner} alt="Loading" /> : details}
+                    {isLoading ? <LoadingSpinner /> : details}
                 </div>
             </div>
         )

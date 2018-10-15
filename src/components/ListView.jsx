@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { connect } from 'react-redux'
 import Movies from './Movies';
 import ToggleModeButton from './ToggleModeButton';
-import spinner from './../images/spinner.svg';
 import {
     MODES,
     discoverItems,
@@ -13,6 +12,7 @@ import {
 }
     from './../actions';
 import Search from './Search';
+import LoadingSpinner from './LoadingSpinner';
 
 class ListView extends Component {
 
@@ -72,7 +72,7 @@ class ListView extends Component {
                     <Search handleChange={this.handleChange} value={searchQuery} />
                 </section>
                 {isLoading ?
-                    <div className="d-flex justify-content-center"><img src={spinner} alt="Loading" /></div> :
+                    <div className="d-flex justify-content-center"><LoadingSpinner /></div> :
                     <Movies items={items} onClick={this.handleClick} />}
             </div>
         );
