@@ -47,7 +47,7 @@ class ListView extends Component {
         if (selectedMode !== prevProps.selectedMode || searchQuery !== prevProps.searchQuery) {
             if (searchQuery.length > 2)
                 dispatch(searchItems(selectedMode, searchQuery));
-            else
+            else if (prevProps.searchQuery.length > 2)
                 dispatch(discoverItems(selectedMode));
         }
     }
