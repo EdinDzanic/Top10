@@ -39,3 +39,8 @@ code {
 iframe {
   border: 1px solid lightslategray;
 }
+
+.notice {
+  margin-top: 30vh;
+  font-size: 2rem;
+}
