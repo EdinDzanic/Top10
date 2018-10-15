@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
-import Movies from './components/Movies';
+import ListView from './components/ListView';
+import DetailsView from './components/DetailsView';
 
 class App extends Component {
   render() {
+    const { isListView } = this.props;
     return (
-      <div className="App p-2">
-        <form action="">
-          <div className="form-group">
-            <div className="btn-group" role="group">
-              <button type="button" className="btn btn-primary">Movies</button>
-              <button type="button" className="btn btn-outline-primary">TV Shows</button>
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="sr-only" htmlFor="search">Search</label>
-            <input type="search" className="form-control" id="search" placeholder="Search" />
-          </div>
-        </form>
-
-        <Movies />
+      <div className="App">
+        {isListView ? <ListView /> : <DetailsView />}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => (
+  {
+    isListView: state.isListView,
+    selectedId: state.selectedId
+  }
+);
+
+export default connect(mapStateToProps)(App);
