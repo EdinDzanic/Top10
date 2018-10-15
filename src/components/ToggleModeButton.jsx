@@ -1,4 +1,4 @@
-import Button from './Button';
+import ActiveButton from './ActiveButton';
 import { connect } from 'react-redux'
 import { toggleMode } from './../actions';
 
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Button)
+)(ActiveButton)
