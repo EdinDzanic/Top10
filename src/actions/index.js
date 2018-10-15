@@ -82,7 +82,7 @@ export function getItem(mode, id) {
     return function (dispatch) {
         dispatch(requestDiscover(mode));
 
-        const url = `${API_URL}${mode}/${id}?api_key=${API_KEY}`;
+        const url = `${API_URL}${mode}/${id}?api_key=${API_KEY}&&append_to_response=videos`;
 
         return fetch(url)
             .then(
