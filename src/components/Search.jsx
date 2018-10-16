@@ -9,6 +9,7 @@ class Search extends Component {
             searchQuery: props.value
         }
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.debounceTextChange = _.debounce(props.handleChange, 500);
     }
 
     render() {
@@ -23,8 +24,8 @@ class Search extends Component {
 
     handleTextChange(e) {
         this.setState({searchQuery: e.target.value});
-        const {handleChange} = this.props;
-        _.debounce(handleChange, 500)(e.target.value);
+        this.debounceTextChange.cancel();
+        this.debounceTextChange(e.target.value);
     }
 }
 
