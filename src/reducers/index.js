@@ -2,17 +2,18 @@ import { combineReducers } from 'redux'
 
 import {
     MODES,
-    REQUEST_DISCOVER,
+    REQUEST_FETCH,
     RECEIVE_ITEMS,
     CHANGE_SAERCH_QUERY,
     SET_SELECTED_ITEM,
-    RECEIVE_ITEM
+    RECEIVE_ITEM,
+    TOGGLE_MODE
 }
-    from './../actions'
+from './../actions';
 
 const selectedMode = (state = MODES.TV, action) => {
     switch (action.type) {
-        case 'TOGGLE_MODE':
+        case TOGGLE_MODE:
             return action.mode;
         default:
             return state;
@@ -66,7 +67,7 @@ const selectedItem = (state = {}, action) => {
 
 const isLoading = (state = false, action) => {
     switch (action.type) {
-        case REQUEST_DISCOVER:
+        case REQUEST_FETCH:
             return true;
         case RECEIVE_ITEM:
         case RECEIVE_ITEMS:
