@@ -18,9 +18,8 @@ code {
 }
 
 .card-img-top {
-  width: 100%;
-  height: 25vw;
-  object-fit: cover;
+  width: 185px;
+  height: 278px;
 }
 
 .card {
@@ -31,9 +30,14 @@ code {
   font-size: 1.5rem;
 }
 
-.card:hover {
-  box-shadow: 0 0 5px 6px rgb(167, 165, 165);
+.poster:hover {
   cursor: pointer;
+  box-shadow: 0 0 5px 5px rgb(146, 144, 144);
+}
+
+.poster{
+  border: 1px solid lightgrey;
+  transition: all ease 0.3s;
 }
 
 iframe {
@@ -47,4 +51,8 @@ iframe {
 
 .spinner {
   margin-top: 20vh;
+}
+
+.sub-text {
+  font-size: 1rem;
 }
