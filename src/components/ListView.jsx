@@ -5,7 +5,7 @@ import Movies from './Movies';
 import ToggleModeButton from './ToggleModeButton';
 import {
     MODES,
-    discoverItems,
+    fetchItems,
     searchItems,
     changeSearchQuery,
     displayItem
@@ -38,7 +38,7 @@ class ListView extends Component {
         if (searchQuery.length > 2)
             dispatch(searchItems(selectedMode, searchQuery));
         else
-            dispatch(discoverItems(selectedMode));
+            dispatch(fetchItems(selectedMode));
     }
 
     componentDidUpdate(prevProps) {
@@ -48,13 +48,13 @@ class ListView extends Component {
             if (searchQuery.length > 2)
                 dispatch(searchItems(selectedMode, searchQuery));
             else if (prevProps.searchQuery.length > 2)
-                dispatch(discoverItems(selectedMode));
+                dispatch(fetchItems(selectedMode));
         }
         else if (selectedMode !== prevProps.selectedMode) {
             if (searchQuery.length > 2)
                 dispatch(searchItems(selectedMode, searchQuery));
             else
-                dispatch(discoverItems(selectedMode));
+                dispatch(fetchItems(selectedMode));
         }
     }
 
