@@ -2,6 +2,7 @@ import React from 'react';
 import Overview from './Overview';
 import Title from './Title';
 import Preview from './Preview';
+import Genres from './Genres';
 
 export default function MovieDetails(props) {
     const {
@@ -9,7 +10,9 @@ export default function MovieDetails(props) {
         title,
         overview,
         videos = {},
-        tagline = ""
+        tagline = "",
+        vote_average,
+        genres
     } = props;
 
     return (
@@ -17,9 +20,11 @@ export default function MovieDetails(props) {
             <header>
                 <Preview videos={videos} posterPath={poster_path} />
                 <Title text={title}>
-                    <small>
-                        <p className="text-muted">{tagline}</p>
-                    </small>
+                    <p className="sub-text text-muted">{tagline}</p>
+                    <div className="sub-text">
+                        Rating: {vote_average}/10<span className="mr-1 ml-1">|</span>
+                        <Genres genres={genres} />
+                    </div>
                 </Title>
             </header>
             <Overview text={overview} />
