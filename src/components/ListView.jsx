@@ -1,18 +1,18 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux'
-import Movies from './Movies';
-import ToggleModeButton from './ToggleModeButton';
+import PropTypes from 'prop-types';
+
+import List from './List';
 import {
-    MODES,
     fetchItems,
     searchItems,
     changeSearchQuery,
     displayItem
-}
-    from './../actions';
+} from './../actions';
 import Search from './Search';
 import LoadingSpinner from './LoadingSpinner';
+import ToggleButtons from './ToggleButtons';
 
 class ListView extends Component {
 
@@ -24,7 +24,6 @@ class ListView extends Component {
 
     handleChange(value) {
         const { dispatch } = this.props;
-        //const value = value;
         dispatch(changeSearchQuery(value));
     }
 
@@ -63,23 +62,18 @@ class ListView extends Component {
         return (
             <div>
                 <section>
-                    <div className="form-group">
-                        <div className="btn-group" role="group">
-                            <ToggleModeButton mode={MODES.MOVIE}>Movies</ToggleModeButton>
-                            <ToggleModeButton mode={MODES.TV}>TV Shows</ToggleModeButton>
-                        </div>
-                    </div>
+                    <ToggleButtons />
                     <Search handleChange={this.handleChange} value={searchQuery} />
                 </section>
                 {isLoading ?
                     <div className="d-flex justify-content-center"><LoadingSpinner /></div> :
-                    <Movies items={items} onClick={this.handleClick} />}
+                    <List items={items} onClick={this.handleClick} />}
             </div>
         );
     }
 }
 
-const mapStateToProps = (state, ownProps) => (
+const mapStateToProps = (state) => (
     {
         items: state.items,
         selectedMode: state.selectedMode,
@@ -87,5 +81,12 @@ const mapStateToProps = (state, ownProps) => (
         isLoading: state.isLoading
     }
 );
+
+ListView.propTypes = {
+    items: PropTypes.array.isRequired,
+    selectedMode: PropTypes.string.isRequired,
+    searchQuery: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired
+}
 
 export default connect(mapStateToProps)(ListView);

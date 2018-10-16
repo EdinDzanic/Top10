@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Video from './Video';
 import Poster from './Poster';
 
-export default function Preview({ videos, posterPath}) {
+function Preview({ videos, posterPath }) {
     let hasTrailer = videos !== undefined && videos.results && videos.results.length > 0;
     let trailer;
     if (hasTrailer)
-        trailer = videos.results.find(x => x.type === 'Trailer');
-    
+        trailer = videos.results.find(video => video.type === 'Trailer');
+
     hasTrailer = trailer !== undefined;
     return (
         <React.Fragment>
@@ -18,3 +20,10 @@ export default function Preview({ videos, posterPath}) {
         </React.Fragment>
     );
 }
+
+Preview.propTypes = {
+    videos: PropTypes.object.isRequired,
+    posterPath: PropTypes.string
+}
+
+export default Preview;

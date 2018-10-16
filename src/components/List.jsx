@@ -1,14 +1,14 @@
 import React from "react";
 
-import Movie from './Movie';
+import Item from './Item';
 
-export default function Movies(props) {
+export default function List(props) {
     const { items, onClick } = props;
     return (
         <div className="d-flex flex-row p-2 justify-content-center flex-wrap">
             {items.length > 0 ?
                 items.map((item, i) =>
-                    <Movie
+                    <Item
                         key={i}
                         name={item.name || item.title}
                         poster_path={item.poster_path}

@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Overview from './Overview';
 import Title from './Title';
 import Preview from './Preview';
 import Genres from './Genres';
 
-export default function MovieDetails(props) {
+function MovieDetails(props) {
     const {
         poster_path,
         title,
@@ -31,3 +33,15 @@ export default function MovieDetails(props) {
         </article>
     )
 }
+
+MovieDetails.propTypes = {
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    videos: PropTypes.object,
+    tagline: PropTypes.string,
+    vote_average: PropTypes.number,
+    genres: PropTypes.array
+}
+
+export default MovieDetails;

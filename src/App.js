@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 import ListView from './components/ListView';
 import DetailsView from './components/DetailsView';
@@ -15,11 +16,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => (
+const mapStateToProps = (state) => (
   {
-    isListView: state.isListView,
-    selectedId: state.selectedId
+    isListView: state.isListView
   }
 );
+
+App.propTypes = {
+  isListView: PropTypes.bool.isRequired
+}
 
 export default connect(mapStateToProps)(App);

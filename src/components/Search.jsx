@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 class Search extends Component {
@@ -13,7 +14,7 @@ class Search extends Component {
     }
 
     render() {
-        const {searchQuery} = this.state;
+        const { searchQuery } = this.state;
         return (
             <div className="form-group">
                 <label className="sr-only" htmlFor="search">Search</label>
@@ -23,10 +24,16 @@ class Search extends Component {
     }
 
     handleTextChange(e) {
-        this.setState({searchQuery: e.target.value});
+        const value = e.target.value;
+        this.setState({ searchQuery: value });
         this.debounceTextChange.cancel();
-        this.debounceTextChange(e.target.value);
+        this.debounceTextChange(value);
     }
+}
+
+Search.propTypes = {
+    searchQuery: PropTypes.string,
+    handleChange: PropTypes.func.isRequired
 }
 
 export default Search;

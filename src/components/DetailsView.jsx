@@ -1,10 +1,11 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { CHANGE_VIEW, getItem} from '../actions';
+import PropTypes from 'prop-types';
+
+import { CHANGE_VIEW, getItem } from '../actions';
 import MovieDetails from './MovieDetails';
 import TvDetails from './TvDetails';
-import spinner from './../images/spinner.svg';
 import Button from './Button';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -36,7 +37,7 @@ class DetailsView extends Component {
 
         return (
             <div>
-                <Button cssClass="btn btn-primary mb-2" onClick={this.handleClick}>Back</Button>
+                <Button cssClass="btn btn-primary mb-2" onClick={this.handleClick}>⇐ Back</Button>
                 <div className="d-flex flex-column">
                     {isLoading ? <LoadingSpinner /> : details}
                 </div>
@@ -45,7 +46,7 @@ class DetailsView extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => (
+const mapStateToProps = (state) => (
     {
         selectedMode: state.selectedMode,
         selectedId: state.selectedId,
@@ -53,5 +54,12 @@ const mapStateToProps = (state, ownProps) => (
         isLoading: state.isLoading
     }
 );
+
+DetailsView.propTypes = {
+    selectedMode: PropTypes.string.isRequired,
+    selectedId: PropTypes.number.isRequired,
+    selectedItem: PropTypes.object.isRequired,
+    isLoading: PropTypes.bool.isRequired
+}
 
 export default connect(mapStateToProps)(DetailsView);

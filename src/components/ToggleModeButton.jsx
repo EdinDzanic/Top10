@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { toggleMode } from './../actions';
 
 const mapStateToProps = (state, ownProps) => (
-    {active: ownProps.mode === state.selectedMode}
+    { active: ownProps.mode === state.selectedMode }
 );
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

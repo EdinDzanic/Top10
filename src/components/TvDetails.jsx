@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Preview from './Preview';
 import Overview from './Overview';
 import Title from './Title';
 import Genres from './Genres';
 
-export default function TvDetails(props) {
+function TvDetails(props) {
     const {
         poster_path,
         name,
@@ -15,7 +17,7 @@ export default function TvDetails(props) {
         number_of_episodes,
         genres
     } = props;
-    console.log(genres);
+
     return (
         <article className="col-md-8">
             <header>
@@ -33,3 +35,16 @@ export default function TvDetails(props) {
         </article>
     )
 }
+
+TvDetails.propTypes = {
+    poster_path: PropTypes.string,
+    name: PropTypes.string,
+    overview: PropTypes.string,
+    videos: PropTypes.object,
+    number_of_seasons: PropTypes.number,
+    number_of_episodes: PropTypes.number,
+    vote_average: PropTypes.number,
+    genres: PropTypes.array
+}
+
+export default TvDetails;

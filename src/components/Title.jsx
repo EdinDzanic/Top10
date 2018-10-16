@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Overview({text, children}) {
+function Title({ text, children }) {
     return (
         <h1>
             {text}
@@ -8,3 +9,9 @@ export default function Overview({text, children}) {
         </h1>
     );
 }
+
+Title.propType = {
+    text: PropTypes.string
+}
+
+export default Title;
